@@ -26,13 +26,16 @@ This repository is the starting point. A functioning driver still requires devic
   https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Driver-SDK-V1/API-Reference/Driver-JSON-Schema/Driver-JSON-Schema.htm
 - Driver JSON schema API details (property/member-level reference):  
   https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Driver-SDK-V1/API-Reference/Driver-JSON-Schema/API/API.htm
+- SDK Architecture (framework and best-practice guidance):  
+  https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Driver-SDK-V1/SDK-Framework/SDK-Architecture.htm
+- Crestron Driver SDK Best Practices:  
+  https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Best-Practices/Best-Practices.htm
 
 ### Still needed (specific links)
 
 Please share direct links to the exact pages for:
 
-1. Transport guidance and best practices (TCP/serial/HTTP), including reconnect/session behavior.
-2. Validation/certification requirements or pre-release checklist.
+1. Transport implementation examples specific to your target protocol/device class (if available).
 
 > Note: Packaging/Manifest Utility steps can be handled at the end and are not required to start core driver implementation.
 
