@@ -52,7 +52,7 @@ Please share direct links to the exact pages for:
 
 ## Immediate next step from the docs provided
 
-Using the "Create a Project," "Extension Drivers," "UI Files," SDK Architecture guidance, Best Practices guidance, and full SDK API reference, we can now begin implementation by replacing template placeholders with concrete driver identity values and scaffolding required driver classes/methods directly against the API docs before filling in transport/protocol specifics.
+Using the "Create a Project," "Extension Drivers," "UI Files," and full SDK API reference, we can now begin implementation by replacing template placeholders with concrete driver identity values and scaffolding required driver classes/methods directly against the API docs before filling in transport/protocol specifics.
 
 ## Device details needed before coding
 
