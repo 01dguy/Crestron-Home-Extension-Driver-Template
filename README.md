@@ -35,7 +35,7 @@ This repository is the starting point. A functioning driver still requires devic
 
 Please share direct links to the exact pages for:
 
-1. Transport implementation examples specific to your target protocol/device class (if available).
+1. Optional: transport implementation examples for your specific target protocol/device class (helpful for production behavior, but not required for using this basic template).
 
 > Note: Packaging/Manifest Utility steps can be handled at the end and are not required to start core driver implementation.
 
