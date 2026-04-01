@@ -1,9 +1,9 @@
 ﻿using System;
 using Crestron.RAD.Common.Interfaces;
 using Crestron.RAD.Common.Interfaces.ExtensionDevice;
-using Crestron.RAD.DeviceTypes.ExtensionDevice;
 using Crestron.RAD.Common.Attributes.Programming;
 using Crestron.RAD.Common.Enums;
+using Crestron.RAD.DeviceTypes.ExtensionDevice;
 
 
 namespace Home_Extension_Template

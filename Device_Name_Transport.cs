@@ -1,4 +1,9 @@
-﻿using Crestron.RAD.Common.Transports;
+﻿using System;
+using System.Net.WebSockets;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using Crestron.RAD.Common.Transports;
 
 namespace Home_Extension_Template
 {
