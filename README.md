@@ -6,38 +6,19 @@ These files make up a template for writing extension drivers for Crestron Home. 
 
 This repository is the starting point. A functioning driver still requires device-specific transport logic, protocol parsing, command/feedback wiring, and metadata/UI completion.
 
-## Documentation status
+## Canonical documentation context
 
-### Received
+Use [`docs/CODEX_CONTEXT.md`](docs/CODEX_CONTEXT.md) as the primary source of truth for SDK links, architecture notes, UI contract expectations, and implementation guidance.
 
-- Driver SDK v1 landing page:  
-  https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Driver-SDK-V1/Driver-SDK-V1.htm
-- Create a Project (Simpl# required interfaces/classes starting point):  
-  https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Driver-SDK-V1/Create-a-Driver/Create-a-Project.htm
-- Extension Drivers overview:  
-  https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Driver-SDK-V1/Create-a-Driver/Device-Types/Extensions/Extension-Drivers.htm
-- UI Files reference (`UiDefinition.xml` structure and supported definitions):  
-  https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Driver-SDK-V1/Create-a-Driver/Device-Types/Extensions/UI-Files.htm
-- UI translation guidance for `en-US.json` (same UI Files page, Translations section):  
-  https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Driver-SDK-V1/Create-a-Driver/Device-Types/Extensions/UI-Files.htm#Translat
-- Crestron Device Driver SDK API reference (full class/member docs):  
-  https://sdkcon78221.crestron.com/downloads/CrestronCertifiedDriversAPI/html/R_Project_Crestron_Certified_Drivers_SDK_Documentation.htm
-- Driver JSON schema reference:  
-  https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Driver-SDK-V1/API-Reference/Driver-JSON-Schema/Driver-JSON-Schema.htm
-- Driver JSON schema API details (property/member-level reference):  
-  https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Driver-SDK-V1/API-Reference/Driver-JSON-Schema/API/API.htm
-- SDK Architecture (framework and best-practice guidance):  
-  https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Driver-SDK-V1/SDK-Framework/SDK-Architecture.htm
-- Crestron Driver SDK Best Practices:  
-  https://sdkcon78221.crestron.com/sdk/Crestron_Certified_Drivers_SDK/Content/Topics/Best-Practices/Best-Practices.htm
+When in doubt, update `docs/CODEX_CONTEXT.md` first and keep this README concise.
 
-### Still needed (specific links)
+## Optional docs still helpful
 
 Please share direct links to the exact pages for:
 
 1. Optional: transport implementation examples for your specific target protocol/device class (helpful for production behavior, but not required for using this basic template).
 
-> Note: Packaging/Manifest Utility steps can be handled at the end and are not required to start core driver implementation.
+Note: Packaging/Manifest Utility steps can be handled at the end and are not required to start core driver implementation.
 
 ## Implementation plan mapped to this template
 
