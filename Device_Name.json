@@ -7,9 +7,9 @@
 			"DeviceType": "Generic Device",
 			"Manufacturer": "Generic Device Manufacturer",
 			"BaseModel": "Generic 1",
-			"VersionDate": " 2021-03-22 06:56:42.4853 ",
-			"DriverVersion": "1.0.000.0000",
-			"SdkVersion": "6.0.0",
+			"VersionDate": " 2026-03-22 06:56:42.4853 ",
+			"DriverVersion": "1.0.0",
+			"SdkVersion": "16.00.000",
 			"Description": "Generic Device Template",
 			"Guid": "fd3d06cb-2f93-4dac-8b96-f59a3d390bb1",
 			"ExtensionDeviceData": {
