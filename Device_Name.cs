@@ -43,21 +43,41 @@ namespace Home_Extension_Template
 		public delegate void UI_Update_Delegate();
 		#endregion Delegates
 
-		//****************************************************************************************
-		// 
-		//  Device_Name	-   Constructor
-		// 
-		//****************************************************************************************
-		public Device_Name()
-		{
-			#region Debug Message
-			Log("Device_Name - Constructor - Start");
-			#endregion Debug Message
+			//****************************************************************************************
+			// 
+			//  Device_Name	-   Constructor
+			// 
+			//****************************************************************************************
+			public Device_Name()
+			{
+				#region Debug Message
+				Log("Device_Name - Constructor - Start");
+				#endregion Debug Message
 
-			#region Debug Message
-			Log("Device_Name - Constructor - Finish");
-			#endregion Debug Message
-		}
+				#region Debug Message
+				Log("Device_Name - Constructor - Finish");
+				#endregion Debug Message
+			}
+
+			private void Ensure_Settings_Loaded()
+			{
+				if (Settings != null)
+				{
+					return;
+				}
+
+				var temp = GetSetting(Filename);
+				if (temp != null)
+				{
+					Settings = (Settings_Data)temp;
+				}
+				else
+				{
+					// No persisted settings found, create defaults and persist.
+					Settings = new Settings_Data();
+					SaveSetting(Filename, Settings);
+				}
+			}
 
 		//****************************************************************************************
 		// 
@@ -80,23 +100,23 @@ namespace Home_Extension_Template
 			Create_Device_Definition();
 			#endregion Setup UI
 
-			#region Setup Transport
-			try
-			{
-				Transport = new Device_Name_Transport(this)
+				#region Setup Transport
+				try
 				{
-					EnableLogging = InternalEnableLogging,
-					CustomLogger = InternalCustomLogger,
-					EnableRxDebug = InternalEnableRxDebug,
-					EnableTxDebug = InternalEnableTxDebug
-				};
-				ConnectionTransport = Transport;
-			}
-			catch (Exception e)
-			{
-				string err = "Device_Name - Initialize - Error Setting Up Transport: " + e;
-				#region Debug Message
-				Log(err);
+					Transport = new Device_Name_Transport(this)
+					{
+						EnableLogging = InternalEnableLogging,
+						CustomLogger = InternalCustomLogger,
+						EnableRxDebug = InternalEnableRxDebug,
+						EnableTxDebug = InternalEnableTxDebug
+					};
+					ConnectionTransport = Transport;
+				}
+				catch (Exception e)
+				{
+					string err = "Device_Name - Initialize - Error Setting Up Transport: " + e;
+					#region Debug Message
+					Log(err);
 				#endregion Debug Message
 				Crestron.SimplSharp.ErrorLog.Error(err + "\n");
 			}
@@ -225,32 +245,34 @@ namespace Home_Extension_Template
 			#endregion Debug Message
 		}
 
-		//****************************************************************************************
-		// 
-		//  DoCommand	-   
-		// 
-		//****************************************************************************************
-		protected override IOperationResult DoCommand(string command, string[] parameters)
-		{
-			#region Debug Message
-			Log("Device_Name - DoCommand - Start");
-			#endregion Debug Message
-
-			switch (command)
+			//****************************************************************************************
+			// 
+			//  DoCommand	-   
+			// 
+			//****************************************************************************************
+			protected override IOperationResult DoCommand(string command, string[] parameters)
 			{
-				case "ShowSettings":
-					//Load Boolean Values
+				#region Debug Message
+				Log("Device_Name - DoCommand - Start");
+				#endregion Debug Message
+
+				Ensure_Settings_Loaded();
+
+				switch (command)
+				{
+					case "ShowSettings":
+						//Load Boolean Values
 					Checkbox_Value_Property.Value = Settings.Checkbox_Setting;
 					//Load String Values
 					Text_Entry_Value_Property.Value = Settings.Text_Entry_Setting;
 					break;
 
-				case "SaveSettings":
-					Settings.Save(Checkbox_Value_Property.Value, Text_Entry_Value_Property.Value);
-					//Make Settings Persistant
-					SaveSetting(Filename, Settings);
-					break;
-			}
+					case "SaveSettings":
+						Settings.Save(Checkbox_Value_Property.Value, Text_Entry_Value_Property.Value);
+						// Make settings persistent.
+						SaveSetting(Filename, Settings);
+						break;
+				}
 			
 			Commit();
 
@@ -334,16 +356,16 @@ namespace Home_Extension_Template
 			return new OperationResult(OperationResultCode.Success);
 		}
 
-		//****************************************************************************************
-		// 
-		//  Connect	-   
-		// 
-		//****************************************************************************************
-		public override void Connect()
-		{
-			#region Debug Message
-			Log("Device_Name - Connect - Start");
-			#endregion Debug Message
+			//****************************************************************************************
+			// 
+			//  Connect	-   
+			// 
+			//****************************************************************************************
+			public override void Connect()
+			{
+				#region Debug Message
+				Log("Device_Name - Connect - Start");
+				#endregion Debug Message
 
 			if (Protocol == null)
 			{
@@ -351,29 +373,13 @@ namespace Home_Extension_Template
 				Log("Device_Name - Connect - Protocol was null when Connect was called");
 				#endregion Debug Message
 			}
-			else
-			{
-				#region Load Persistant Settings
-				var temp = GetSetting(Filename);
-				if (temp != null)
-				{
-					Settings = (Settings_Data)temp;
-				}
 				else
 				{
-					//No Persistant Notifications - Create From Scratch and Save for Next Time
-					Settings = new Settings_Data();
-					SaveSetting(Filename, Settings);
+					Ensure_Settings_Loaded();
+					base.Connect();
+					Protocol.Start();
+					Connected = Transport != null && Transport.IsConnected;
 				}
-				#endregion Load Persistant Notifications
-
-				base.Connect();
-
-				// Set Connected flag to true
-				Connected = true;
-
-				Protocol.Start();
-			}
 
 			#region Debug Message
 			Log("Device_Name - Connect - Finish");

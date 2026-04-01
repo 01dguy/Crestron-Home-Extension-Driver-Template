@@ -99,8 +99,8 @@ namespace Home_Extension_Template
 			#endregion Debug Message
 			#endregion Test Code
 
-			//Update your UI with the information
-			UI_Update();
+			// Update the UI only when the callback has been wired.
+			UI_Update?.Invoke();
 
 			#region Debug Message
 			Log("Device_Name_Protocol - Poll - Finish");

@@ -13,20 +13,20 @@ namespace Home_Extension_Template
 		public Device_Name Device;
 		#endregion Declarations
 
-		//****************************************************************************************
-		// 
-		//  Device_Name_Transport	-	Constructor
-		// 
-		//****************************************************************************************
-		public Device_Name_Transport(Device_Name Device)
-		{
-			#region Debug Message
-			Log("Device_Name_Transport - Constructor - Start");
-			#endregion Debug Message
+			//****************************************************************************************
+			// 
+			//  Device_Name_Transport	-	Constructor
+			// 
+			//****************************************************************************************
+			public Device_Name_Transport(Device_Name Device)
+			{
+				#region Debug Message
+				Log("Device_Name_Transport - Constructor - Start");
+				#endregion Debug Message
 
-			IsEthernetTransport = true;
-			IsConnected = true;
-			this.Device = Device;
+				IsEthernetTransport = true;
+				IsConnected = false;
+				this.Device = Device;
 
 			#region Debug Message
 			Log("Device_Name_Transport - Constructor - Finish");
@@ -34,37 +34,41 @@ namespace Home_Extension_Template
 		}
 
 		#region Overrides
-		//****************************************************************************************
-		// 
-		//  Start	-	
-		// 
-		//****************************************************************************************
-		public override void Start()
-		{
-			#region Debug Message
-			Log("Device_Name_Transport - Start - Start");
-			#endregion Debug Message
+			//****************************************************************************************
+			// 
+			//  Start	-	
+			// 
+			//****************************************************************************************
+			public override void Start()
+			{
+				#region Debug Message
+				Log("Device_Name_Transport - Start - Start");
+				#endregion Debug Message
 
-			#region Debug Message
-			Log("Device_Name_Transport - Start - Finish");
-			#endregion Debug Message
-		}
+				IsConnected = true;
 
-		//****************************************************************************************
-		// 
-		//  Stop	-	
-		// 
-		//****************************************************************************************
-		public override void Stop()
-		{
-			#region Debug Message
-			Log("Device_Name_Transport - Stop - Start");
-			#endregion Debug Message
+				#region Debug Message
+				Log("Device_Name_Transport - Start - Finish");
+				#endregion Debug Message
+			}
 
-			#region Debug Message
-			Log("Device_Name_Transport - Stop - Finish");
-			#endregion Debug Message
-		}
+			//****************************************************************************************
+			// 
+			//  Stop	-	
+			// 
+			//****************************************************************************************
+			public override void Stop()
+			{
+				#region Debug Message
+				Log("Device_Name_Transport - Stop - Start");
+				#endregion Debug Message
+
+				IsConnected = false;
+
+				#region Debug Message
+				Log("Device_Name_Transport - Stop - Finish");
+				#endregion Debug Message
+			}
 
 		//****************************************************************************************
 		// 
