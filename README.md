@@ -10,6 +10,8 @@ This repository is the starting point. A functioning driver still requires devic
 
 Use [`docs/CODEX_CONTEXT.md`](docs/CODEX_CONTEXT.md) as the primary source of truth for SDK links, architecture notes, UI contract expectations, and implementation guidance.
 
+Use [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for a template-level breakdown of runtime layers, responsibilities, data flow, and packaging model.
+
 When in doubt, update `docs/CODEX_CONTEXT.md` first and keep this README concise.
 
 ## Optional docs still helpful
